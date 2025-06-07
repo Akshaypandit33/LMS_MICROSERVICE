@@ -1,0 +1,7 @@
+@programId = 8da416aa-9522-4886-8295-e9f1072e5375
+@collegeId = f1b010d8-f68c-4ef6-8b71-09d7361fb77e
+###get program By id
+
+GET http://localhost:8084/programs/{{programId}}
+Content-Type: application/json
+collegeId:{{collegeId}}

@@ -1,0 +1,33 @@
+@baseUrl = http://localhost:8084
+@loggedInUser=f5ace583-0592-4cda-bae7-2fed9a38d119
+@userIdOfHod =815ec72e-3784-4d4b-be53-25150b0ababa
+@collegeId =33148f89-7f8e-4fb0-a90d-5bab86b5ade0
+@branchid =2e5e476b-75f8-4c91-b039-b070d85c26db
+### 1. Assign HOD
+POST {{baseUrl}}/hod/assign?userId={{userIdOfHod}}&branchId={{branchid}}
+Content-Type: application/json
+collegeId:{{collegeId}}
+userId:{{loggedInUser}}
+
+
+### 2. Remove HOD
+DELETE /hod/remove?branchId=123e4567-e89b-12d3-a456-426614174000&removedBy=2a2b3c4d-5e6f-7a89-b012-3456789abcd
+{{COLLEGE_ID_HEADER}}
+
+### 3. Transfer HOD
+PUT {{baseUrl}}/hod/transfer?currentBranchId=123e4567-e89b-12d3-a456-426614174000&newBranchId=321e4567-e89b-12d3-a456-426614174111&transferredBy=2a2b3c4d-5e6f-7a89-b012-3456789abcd
+{{COLLEGE_ID_HEADER}}
+
+### 4. Get HOD by Branch
+GET {{baseUrl}}/hod/branch/123e4567-e89b-12d3-a456-426614174000
+{{COLLEGE_ID_HEADER}}
+
+### 5. Get HOD by User
+GET {{baseUrl}}/hod/user/{{userIdOfHod}}
+collegeId:{{collegeId}}
+
+### 6. Check if User is HOD
+GET {{baseUrl}}/hod/check/user/{{userIdOfHod}}
+
+### 7. Check if Branch has HOD
+GET {{baseUrl}}/hod/check/branch/{{branchid}}

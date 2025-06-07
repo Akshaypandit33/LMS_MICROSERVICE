@@ -1,0 +1,3 @@
+### get user by email
+GET http://localhost:8082/users/email?email=niet@admi.com
+Content-Type: application/json

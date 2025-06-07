@@ -1,0 +1,17 @@
+### add college
+POST http://localhost:8083/college/add
+Content-Type: application/json
+
+{
+  "collegeCode": "NIET",
+  "logoUrl": "logoUrl",
+  "collegeName" : "NIET GreaterNoida",
+  "email" : "niet@college.com",
+  "phoneNo": "95656756456",
+  "address": "greater noida",
+  "adminEmailId": "niet@admin.com"
+}
+
+
+
+

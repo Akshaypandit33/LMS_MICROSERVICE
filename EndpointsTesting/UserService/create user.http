@@ -1,0 +1,25 @@
+###create user
+POST http://localhost:8082/users/create
+Content-Type: application/json
+
+{
+  "firstName" : "ankit",
+  "lastName" : "kumar",
+  "email" : "niet@admin.com",
+  "password": "1234",
+  "phoneNumber" : "983456743"
+}
+
+###create user
+POST http://localhost:8082/users/create
+Content-Type: application/json
+
+{
+  "firstName" : "hod",
+  "lastName" : "kumar",
+  "email" : "niet@hod.com",
+  "password": "1234",
+  "phoneNumber" : "983456743",
+  "collegeCode": "NIET",
+  "collegeId": "7943d28b-7e33-42dd-b0e6-feb52db7c688"
+}

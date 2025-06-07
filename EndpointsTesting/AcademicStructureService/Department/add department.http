@@ -1,0 +1,34 @@
+### add department
+@collegeId = 33148f89-7f8e-4fb0-a90d-5bab86b5ade0
+@departmentId = 4faf5884-e654-4fae-b603-daed06237533
+POST http://localhost:8084/departments
+Content-Type: application/json
+collegeId:{{collegeId}}
+
+{
+  "name": "Department of CSE",
+  "code": "cse",
+  "programCode": "b.tech"
+}
+
+###get all department
+GET http://localhost:8084/departments
+Content-Type: application/json
+collegeId:{{collegeId}}
+
+###get department By id
+GET http://localhost:8084/departments/{{departmentId}}
+Content-Type: application/json
+collegeId:{{collegeId}}
+
+
+###get department by program code
+@programCode =b.tech
+GET http://localhost:8084/departments/by-program/{{programCode}}
+Content-Type: application/json
+collegeId:{{collegeId}}
+
+###search department
+GET http://localhost:8084/departments/search?searchTerm=t
+Content-Type: application/json
+collegeId:{{collegeId}}

@@ -1,0 +1,13 @@
+### add userRole
+
+POST http://localhost:8082/userRole/add
+Content-Type: application/json
+
+{
+  "userId": "11bd5766-1b0f-4ea5-ac08-8e1dc4b34786",
+  "roleName": "super_admin"
+}
+
+
+###view all user roles by user id
+GET http://localhost:8082/userRole/viewAl/591b9cb9-afc1-46e0-8614-1aa18712e626

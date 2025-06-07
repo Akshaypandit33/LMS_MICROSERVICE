@@ -1,0 +1,56 @@
+@userId = 65dd6ab8-dc82-4212-be92-4f3165025d1b
+@baseUrl = http://localhost:8082
+
+### Create a new user
+POST {{baseUrl}}/users
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName": "Akshay",
+  "lastName": "Pandit",
+  "email": "lms@superAdmin",
+  "password": "SecurePass@123",
+  "phoneNumber": "9810558363"
+}
+
+###
+POST {{baseUrl}}/users
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName" : "ankit",
+  "lastName" : "kumar",
+  "email" : "niet@admin.com",
+  "password": "Abcd1234",
+  "phoneNumber" : "9834567437"
+}
+###
+
+### Get all users
+GET {{baseUrl}}/users
+Accept: application/json
+
+###
+
+### Get user by ID
+GET {{baseUrl}}/users/{{userId}}
+Accept: application/json
+
+### Get user by email
+GET {{baseUrl}}/users/email/lms@superAdmin
+Accept: application/json
+
+### Update user by ID
+PUT {{baseUrl}}/users/{{userId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "phoneNumber": "9810558363"
+}
+
+### Delete user by ID
+
+DELETE http://localhost:8082/users/{{userId}}

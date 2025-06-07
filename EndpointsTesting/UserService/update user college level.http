@@ -1,0 +1,8 @@
+### update user college level
+PUT http://localhost:8082/users/update/66f1e97c-cdb5-4ac3-9a11-2c4b12281176
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDU3NjM1NzEsImV4cCI6MTc0NTc5OTU3MSwiZW1haWwiOiJ4eXpAdGVzdDEuY29tIiwicm9sZSI6W10sImNvbGxlZ2VJZCI6ImY2OWFiYWVhLWIwZGItNGZjYS1iYzdmLWE4ZDE3M2VlY2JmMSIsInVzZXJJZCI6IjY2ZjFlOTdjLWNkYjUtNGFjMy05YTExLTJjNGIxMjI4MTE3NiJ9._bvquFhMWB1UkzpJpcz_v-ay3mpTkCxhIjV8nxj0HBw
+Content-Type: application/json
+
+{
+  "phoneNumber": "1224566"
+}

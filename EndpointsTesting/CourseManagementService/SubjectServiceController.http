@@ -1,0 +1,39 @@
+### Set variables
+@baseUrl = http://localhost:8085
+@collegeId = 33148f89-7f8e-4fb0-a90d-5bab86b5ade0
+@subjectId = 0b5b060a-694c-42d4-89d9-eab9a214cee9
+
+### Create a Subject
+POST {{baseUrl}}/api/subjects
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+{
+  "name": "Data Structures",
+  "description": "Covers arrays, linked lists, trees, graphs",
+  "credits": 4,
+  "subjectType": "THEORY"
+}
+
+### Get Subject by ID
+GET {{baseUrl}}/api/subjects/{{subjectId}}
+collegeId: {{collegeId}}
+
+### Get All Subjects
+GET {{baseUrl}}/api/subjects
+collegeId: {{collegeId}}
+
+### Update a Subject
+PUT {{baseUrl}}/api/subjects/{{subjectId}}
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+{
+  "name": "Advanced Data Structures",
+  "description": "Includes trees, heaps, and hash maps",
+  "credits": 5
+}
+
+### Delete a Subject
+DELETE {{baseUrl}}/api/subjects/{{subjectId}}
+collegeId: {{collegeId}}

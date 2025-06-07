@@ -1,0 +1,7 @@
+###update college
+PUT http://localhost:8083/college/d46dfff9-0efd-4ff7-a4a1-81b2a76bf72b
+Content-Type: application/json
+
+{
+  "logoUrl": "new logourl1"
+}

@@ -1,0 +1,171 @@
+### Student API HTTP Test Endpoints with Header Validation
+
+# Configuration Variables
+@baseUrl = http://localhost:8082
+@collegeId = COLLEGE_001
+@contentType = application/json
+
+### 1. Create Student - Valid Request with Headers
+POST {{baseUrl}}/students/
+Content-Type: {{contentType}}
+collegeId: {{collegeId}}
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@example.com",
+  "password": "password123",
+  "phoneNumber": "+1234567890",
+  "universityRollNo": "UNI2024001",
+  "erpId": "ERP001",
+  "branchCode": "CSE",
+  "batchYear": "2024",
+  "guardianName": "Jane Doe",
+  "guardianPhone": "+1987654321"
+}
+
+### 2. Create Student - Missing College ID Header (Should Fail)
+POST {{baseUrl}}/students/
+Content-Type: {{contentType}}
+
+{
+  "firstName": "Missing",
+  "lastName": "Header",
+  "email": "missing.header@example.com",
+  "password": "password123",
+  "phoneNumber": "+1234567890",
+  "erpId": "ERP_MISSING",
+  "branchCode": "CSE",
+  "batchYear": "2024",
+  "guardianName": "Missing Guardian",
+  "guardianPhone": "+1987654321"
+}
+
+### 3. Create Student - Empty College ID Header (Should Fail)
+POST {{baseUrl}}/students/
+Content-Type: {{contentType}}
+X-College-Id:
+
+{
+  "firstName": "Empty",
+  "lastName": "Header",
+  "email": "empty.header@example.com",
+  "password": "password123",
+  "phoneNumber": "+1234567890",
+  "erpId": "ERP_EMPTY",
+  "branchCode": "CSE",
+  "batchYear": "2024",
+  "guardianName": "Empty Guardian",
+  "guardianPhone": "+1987654321"
+}
+
+### 4. Create Student - Minimal Valid Data
+POST {{baseUrl}}/students/
+Content-Type: {{contentType}}
+X-College-Id: {{collegeId}}
+
+{
+  "firstName": "Alice",
+  "lastName": "Johnson",
+  "email": "alice.johnson@example.com",
+  "password": "securepass",
+  "phoneNumber": "9876543210",
+  "erpId": "ERP002",
+  "branchCode": "ECE",
+  "batchYear": "2023",
+  "guardianName": "Bob Johnson",
+  "guardianPhone": "8765432109"
+}
+
+### 5. Get Student by ERP ID - Valid Request
+GET {{baseUrl}}/students/ERP001
+X-College-Id: {{collegeId}}
+
+### 6. Get Student by ERP ID - Missing Header (Should Fail)
+GET {{baseUrl}}/students/ERP001
+
+### 7. Get Student by ERP ID - Different College ID
+GET {{baseUrl}}/students/ERP001
+X-College-Id: DIFFERENT_COLLEGE
+
+### 8. Get Student by ERP ID - Non-existent Student
+GET {{baseUrl}}/students/NONEXISTENT
+X-College-Id: {{collegeId}}
+
+### 9. Update Student - Valid Request
+PUT {{baseUrl}}/students/ERP001
+Content-Type: {{contentType}}
+X-College-Id: {{collegeId}}
+
+{
+  "firstName": "John Updated",
+  "lastName": "Doe Updated",
+  "email": "john.doe.updated@example.com",
+  "password": "newpassword123",
+  "phoneNumber": "+1234567891",
+  "universityRollNo": "UNI2024001-UPDATED",
+  "erpId": "ERP001",
+  "branchCode": "CSE",
+  "batchYear": "2024",
+  "guardianName": "Jane Doe Updated",
+  "guardianPhone": "+1987654322"
+}
+
+### 10. Update Student - Missing Header (Should Fail)
+PUT {{baseUrl}}/students/ERP001
+Content-Type: {{contentType}}
+
+{
+  "firstName": "Should",
+  "lastName": "Fail",
+  "email": "should.fail@example.com",
+  "password": "password123",
+  "phoneNumber": "+1234567890",
+  "erpId": "ERP001",
+  "branchCode": "CSE",
+  "batchYear": "2024",
+  "guardianName": "Should Fail",
+  "guardianPhone": "+1987654321"
+}
+
+### 11. Update Student - Invalid Email Validation Test
+PUT {{baseUrl}}/students/ERP002
+Content-Type: {{contentType}}
+X-College-Id: {{collegeId}}
+
+{
+  "firstName": "Alice",
+  "lastName": "Johnson",
+  "email": "invalid-email-format",
+  "password": "securepass",
+  "phoneNumber": "9876543210",
+  "erpId": "ERP002",
+  "branchCode": "ECE",
+  "batchYear": "2023",
+  "guardianName": "Bob Johnson",
+  "guardianPhone": "8765432109"
+}
+
+### 12. Update Student - Short Password Validation Test
+PUT {{baseUrl}}/students/ERP002
+Content-Type: {{contentType}}
+X-College-Id: {{collegeId}}
+
+{
+  "firstName": "Alice",
+  "lastName": "Johnson",
+  "email": "alice.johnson@example.com",
+  "password": "123",
+  "phoneNumber": "9876543210",
+  "erpId": "ERP002",
+  "branchCode": "ECE",
+  "batchYear": "2023",
+  "guardianName": "Bob Johnson",
+  "guardianPhone": "8765432109"
+}
+
+### 13. Get All Students - Valid Request
+GET {{baseUrl}}/students/
+X-College-Id: {{collegeId}}
+
+### 14. Get All

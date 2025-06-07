@@ -1,0 +1,90 @@
+### Faculty Controller API Tests
+
+# Base URL - Update this to match your server configuration
+@baseUrl = http://localhost:8084
+@collegeId = 33148f89-7f8e-4fb0-a90d-5bab86b5ade0
+@contentType = application/json
+
+### 1. Create Faculty - Success Case
+POST {{baseUrl}}/faculty/
+Content-Type: {{contentType}}
+collegeId: {{collegeId}}
+
+{
+  "firstName": "hod",
+  "lastName": "niet",
+  "email": "hod@niet.com",
+  "password": "Password123",
+  "phoneNumber": "9123456789",
+  "employeeId": "EMP001",
+  "designation": "Professor",
+  "qualification": "PhD",
+  "specialization": "Computer Science"
+}
+
+### 2. Create Faculty - Missing Required Fields (Validation Test)
+POST {{baseUrl}}/faculty/
+Content-Type: {{contentType}}
+collegeId: {{collegeId}}
+
+{
+  "firstName": "",
+  "lastName": "",
+  "email": "invalid-email",
+  "password": "",
+  "phoneNumber": "",
+  "employeeId": "",
+  "designation": "",
+  "qualification": "",
+  "specialization": ""
+}
+
+
+### 5. Update Faculty - Success Case
+# Note: Replace 'user123' with actual userId from create response
+PUT {{baseUrl}}/faculty/user123
+Content-Type: {{contentType}}
+collegeId: {{collegeId}}
+
+{
+  "firstName": "John Updated",
+  "lastName": "Doe Updated",
+  "email": "john.updated@college.edu",
+  "password": "newpassword123",
+  "phoneNumber": "1111111111",
+  "employeeId": "EMP001",
+  "collegeId": "{{collegeId}}",
+  "designation": "Senior Professor",
+  "qualification": "PhD",
+  "specialization": "Artificial Intelligence"
+}
+
+### 6. Update Faculty - Non-existent User
+PUT {{baseUrl}}/faculty/nonexistent-user
+Content-Type: {{contentType}}
+collegeId: {{collegeId}}
+
+{
+  "firstName": "Test",
+  "lastName": "User",
+  "email": "test@college.edu",
+  "password": "password123",
+  "phoneNumber": "1234567890",
+  "employeeId": "EMP999",
+  "collegeId": "{{collegeId}}",
+  "designation": "Professor",
+  "qualification": "PhD",
+  "specialization": "Test Subject"
+}
+
+### 7. Get All Faculty - Success Case
+GET {{baseUrl}}/faculty/
+collegeId: {{collegeId}}
+
+
+
+### 16. Delete Faculty - Success Case
+# Note: Replace 'user123' with actual userId
+DELETE {{baseUrl}}/faculty/user123
+collegeId: {{collegeId}}
+}

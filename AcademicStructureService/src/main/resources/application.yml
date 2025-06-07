@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: academic-structure-service
+
+  config:
+    import: configserver:http://localhost:8888

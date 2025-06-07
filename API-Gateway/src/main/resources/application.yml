@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: API-Gateway
+  cloud:
+    loadbalancer:
+      enabled: true
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: auth-service-route
+          uri: lb://auth-service
+          predicates:
+            - Path=/login
+          filters:
+            - RewritePath=/login, /auth/login
+
+        - id: user-service-route
+          uri: lb://user-service
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - JwtValidation
+            - StripPrefix=1
+
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            exposedHeaders:
+              - Authorization
+              - userId
+              - collegeId
+              - email
+              - roles
+    config:
+      enabled: false
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.lms.apigateway.filter: DEBUG  # Changed to DEBUG for more detailed filter logs
+    root: INFO
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG  # For WebClient request/response logging
+    org.springframework.web.reactive.function.client: DEBUG
+
+auth:
+  service:
+    url: http://localhost:8081  # Changed from localhost:8081 to use service discovery

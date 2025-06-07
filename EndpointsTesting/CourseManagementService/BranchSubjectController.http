@@ -1,0 +1,43 @@
+### Variables
+@baseUrl = http://localhost:8085/api
+@collegeId = 33148f89-7f8e-4fb0-a90d-5bab86b5ade
+@branchId = 2e5e476b-75f8-4c91-b039-b070d85c26da
+@subjectId = 0b5b060a-694c-42d4-89d9-eab9a214cee9
+@branchSubjectId = 5877ccd9-508f-40f2-80e5-bea0db164176
+### Create Branch Subject
+POST {{baseUrl}}/branch-subjects
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+{
+  "subjectId": "{{subjectId}}",
+  "branchId": "{{branchId}}",
+  "subjectCode": "CS201",
+  "collegeId": "{{collegeId}}",
+  "semester": 3
+}
+
+### Get Branch Subject by ID
+GET {{baseUrl}}/branch-subjects/{{branchSubjectId}}
+collegeId: {{collegeId}}
+
+### Get All Branch Subjects
+GET {{baseUrl}}/branch-subjects
+collegeId: {{collegeId}}
+
+### Update Branch Subject
+PUT {{baseUrl}}/branch-subjects/{{branchSubjectId}}
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+{
+  "subjectId": "{{subjectId}}",
+  "branchId": "{{branchId}}",
+  "subjectCode": "CS201-UPDATED",
+  "collegeId": "{{collegeId}}",
+  "semester": 4
+}
+
+### Delete Branch Subject
+DELETE {{baseUrl}}/branch-subjects/2b3e3d9a-4e68-4d53-9d2b-bf1987e57f1c
+collegeId: {{collegeId}}

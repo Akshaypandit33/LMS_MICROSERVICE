@@ -1,0 +1,98 @@
+@baseUrl = http://localhost:8084
+@collegeId = 33148f89-7f8e-4fb0-a90d-5bab86b5ade0
+@programId = 26622f3e-64f9-4778-a87d-ea49c39b2c60
+
+### Create Program
+POST {{baseUrl}}/programs
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+{
+  "programCode": "B.TECH",
+  "name": "Bachelor of Technology",
+  "durationYears": 4
+}
+
+### Get Program by ID
+GET {{baseUrl}}/programs/{{programId}}
+collegeId: {{collegeId}}
+
+### Get All Programs
+GET {{baseUrl}}/programs
+collegeId: {{collegeId}}
+
+### Update Program
+PUT {{baseUrl}}/programs/{{programId}}
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+{
+  "programCode": "B.TECH.CSE",
+  "name": "Bachelor of Technology - Computer Science Engineering",
+  "durationYears": 4
+}
+
+### Delete Program
+DELETE {{baseUrl}}/programs/{{programId}}
+collegeId: {{collegeId}}
+
+### Additional Test Cases
+
+### Create Program - MBA
+POST {{baseUrl}}/programs
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+{
+  "programCode": "MBA",
+  "name": "Master of Business Administration",
+  "durationYears": 2
+}
+
+### Create Program - M.TECH
+POST {{baseUrl}}/programs
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+{
+  "programCode": "M.TECH",
+  "name": "Master of Technology",
+  "durationYears": 2
+}
+
+### Create Program - Invalid Data (Missing required fields)
+POST {{baseUrl}}/programs
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+{
+  "programCode": "",
+  "name": "",
+  "durationYears": 0
+}
+
+### Get Program - Non-existent ID
+GET {{baseUrl}}/programs/00000000-0000-0000-0000-000000000000
+collegeId: {{collegeId}}
+
+### Update Program - Non-existent ID
+PUT {{baseUrl}}/programs/00000000-0000-0000-0000-000000000000
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+{
+  "programCode": "TEST",
+  "name": "Test Program",
+  "durationYears": 1
+}
+
+### Delete Program - Non-existent ID
+DELETE {{baseUrl}}/programs/00000000-0000-0000-0000-000000000000
+collegeId: {{collegeId}}
+
+### Test without collegeId header (should fail)
+GET {{baseUrl}}/programs
+
+### Test with invalid collegeId format
+GET {{baseUrl}}/programs
+collegeId: invalid-college-id

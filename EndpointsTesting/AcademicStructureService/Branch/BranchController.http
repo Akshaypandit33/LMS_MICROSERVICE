@@ -1,0 +1,184 @@
+### Variables
+
+@branchId = 2e5e476b-75f8-4c91-b039-b070d85c26db
+@collegeId = 33148f89-7f8e-4fb0-a90d-5bab86b5ade0
+@departmentId = 4faf5884-e654-4fae-b603-daed06237533
+@hodId = 7hgc8hd3-007h-773h-1e13-7h7dde726h6g
+@branchCode = CSE
+
+### Create Branch
+POST http://localhost:8084/branches
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+{
+  "code": "CSE",
+  "name": "Computer Science and Engineering",
+  "departmentId": "{{departmentId}}"
+}
+
+### check branch exist or not
+GET localhost:8084/branches/check?branchId={{branchId}}
+Content-Type: application/json
+collegeId:{{collegeId}}
+
+### Get All Branches
+GET http://localhost:8084/branches
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+### Get Branch By ID
+GET http://localhost:8084/branches/{{branchId}}
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+### Get Branches By Department ID
+GET http://localhost:8084/branches/department/{{departmentId}}
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+### Update Branch
+PUT http://localhost:8084/branches/{{branchId}}
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+{
+  "code": "CSE",
+  "name": "Computer Science and Engineering - Updated",
+  "hod_id": "{{hodId}}",
+  "departmentId": "{{departmentId}}"
+}
+
+### Delete Branch
+DELETE http://localhost:8084/branches/{{branchId}}
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+### Check Branch Code Exists
+GET http://localhost:8084/branches/exists/{{branchCode}}
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+### Search Branches
+GET http://localhost:8084/branches/search?searchTerm=computer
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+### Get Branch Count
+GET http://localhost:8084/branches/count
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+### Get Branch Count By Department
+GET http://localhost:8084/branches/count/department/{{departmentId}}
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+### Additional Test Cases
+
+### Create Another Branch - Electronics
+POST http://localhost:8084/branches
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+{
+  "code": "ECE",
+  "name": "Electronics and Communication Engineering",
+  "hod_id": "{{hodId}}",
+  "departmentId": "{{departmentId}}"
+}
+
+### Create Another Branch - Mechanical
+POST http://localhost:8084/branches
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+{
+  "code": "ME",
+  "name": "Mechanical Engineering",
+  "hod_id": "{{hodId}}",
+  "departmentId": "{{departmentId}}"
+}
+
+### Create Another Branch - Information Technology
+POST http://localhost:8084/branches
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+{
+  "code": "IT",
+  "name": "Information Technology",
+  "hod_id": "{{hodId}}",
+  "departmentId": "{{departmentId}}"
+}
+
+### Search with Different Terms
+GET http://localhost:8084/branches/search?searchTerm=engineering
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+### Search with Code
+GET http://localhost:8084/branches/search?searchTerm=CSE
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+### Search with Partial Name
+GET http://localhost:8084/branches/search?searchTerm=computer
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+### Check Non-Existing Branch Code
+GET http://localhost:8084/branches/exists/INVALID
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+### Check Existing Branch Code
+GET http://localhost:8084/branches/exists/ECE
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+### Test Error Cases
+
+### Get Branch with Invalid ID
+GET http://localhost:8084/branches/00000000-0000-0000-0000-000000000000
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+### Create Branch with Missing Required Fields
+POST http://localhost:8084/branches
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+{
+  "code": "",
+  "name": ""
+}
+
+### Create Branch with Duplicate Code
+POST http://localhost:8084/branches
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+{
+  "code": "CSE",
+  "name": "Duplicate Computer Science",
+  "hod_id": "{{hodId}}",
+  "departmentId": "{{departmentId}}"
+}
+
+### Update Non-Existing Branch
+PUT http://localhost:8084/branches/00000000-0000-0000-0000-000000000000
+Content-Type: application/json
+collegeId: {{collegeId}}
+
+{
+  "code": "NEB",
+  "name": "Non-Existing Branch",
+  "hod_id": "{{hodId}}",
+  "departmentId": "{{departmentId}}"
+}
+
+### Delete Non-Existing Branch
+DELETE http://localhost:8084/branches/00000000-0000-0000-0000-000000000000
+Content-Type: application/json
+collegeId: {{collegeId}}

@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: course-management-service
+
+
+
+  config:
+    import: configserver:http://localhost:8888
+
+logging:
+  level:
+    com.your.package.BranchServiceInterface: DEBUG
+    feign: DEBUG

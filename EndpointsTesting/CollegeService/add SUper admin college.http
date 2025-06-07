@@ -1,0 +1,13 @@
+### add super admin college
+POST http://localhost:8083/college/add
+Content-Type: application/json
+
+{
+  "collegeCode": "lms001",
+  "logoUrl": "logoUrl",
+  "collegeName" : "LMS college",
+  "email" : "lms@college.com",
+  "phoneNo": "95656756456",
+  "address": "delhi",
+  "adminEmailId": "lms@superAdmin"
+}

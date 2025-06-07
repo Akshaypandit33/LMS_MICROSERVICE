@@ -1,0 +1,8 @@
+jwt:
+  secret:
+    key: AKSHAYAEA52D51D1558CB32685816DB338787688KJHJGGHM
+  issuer: "akshay-lms"
+
+server:
+  port: 8081
+

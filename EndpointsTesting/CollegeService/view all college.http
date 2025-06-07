@@ -1,0 +1,3 @@
+
+### view all college
+GET http://localhost:8083/college
