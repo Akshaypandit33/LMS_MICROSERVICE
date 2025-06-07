@@ -3,12 +3,10 @@ package org.lms.authservice.JWT;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
-import jakarta.ws.rs.core.Response;
+
 import lombok.Getter;
 import org.lms.authservice.Config.Service.CustomUserDetail;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
